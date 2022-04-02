@@ -1,0 +1,17 @@
+# -*- mode: snippet -*-
+# name: QT class declaration
+# key: qclass
+# group: Qt
+# --
+
+#include <$2>
+
+
+class ${1:Object} : public ${2:QObject}
+{
+    Q_OBJECT
+
+public:
+    explicit $1(${3:QObject * parent = nullptr});
+    virtual ~$1();
+};

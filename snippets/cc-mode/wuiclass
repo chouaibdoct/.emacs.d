@@ -1,0 +1,25 @@
+# -*- mode: snippet -*-
+# name: W UI class header file
+# key: wuiclass
+# group: Qt - Verdigris
+# --
+#include <verdigris/wobjectdefs.h>
+#include <verdigris/wobjectimpl.h>
+
+#include <$2>
+
+namespace Ui {
+    class $1;
+}
+
+class ${1:MyWidget} : public ${2:QWidget}
+{
+    W_OBJECT($1);
+
+public:
+    explicit $1(${3:QWidget * parent = nullptr});
+    virtual ~$1();
+
+private:
+    Ui::$1 * ui;
+};

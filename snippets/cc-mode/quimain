@@ -1,0 +1,20 @@
+# -*- mode: snippet -*-
+# name: QT UI main file
+# key: quimain
+# group: Qt
+# --
+
+#include <QApplication>
+#include "${1:$(downcase yas/text)}.h"
+
+
+int main(int argc, char *argv[])
+{
+    QApplication a(argc, argv);
+    ${1:Widget} w;
+    $0
+    w.show();
+    return a.exec();
+}
+
+

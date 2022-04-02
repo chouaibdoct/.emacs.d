@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: Slot verdigris
+# key: wslot
+# group: Qt - Verdigris
+# --
+
+
+
+void ${1:function-name}(${2:args});
+W_SLOT($1 , ($2));

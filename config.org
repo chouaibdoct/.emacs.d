@@ -67,7 +67,8 @@
   (global-set-key (kbd "C-x C-<down>") 'windmove-swap-states-down)
   (global-set-key (kbd "C-x C-<up>") 'windmove-swap-states-up)
 
-  (load "framemove.el")
+  
+  (load "framemove")
   (require 'framemove)
   (setq framemove-hook-into-windmove t)
   ;; (windmove-default-keybindings '(kdb "C-x"))
@@ -728,7 +729,7 @@
     (use-package dmenu
       :ensure t
       :bind
-  ;    ("s-x" . 'dmenu)
+;      ("s-x" . 'dmenu)
       )
   (global-set-key (kbd "s-x ") 'dmenu)
 #+END_SRC
@@ -747,32 +748,32 @@
 
 * ansi bash kill without prompt 
   #+BEGIN_SRC emacs-lisp
-       (defun set-no-process-query-on-exit ()
-	 (let ((proc (get-buffer-process (current-buffer))))
-	   (when (processp proc)
-	     (set-process-query-on-exit-flag proc nil))))
-       (add-hook 'term-exec-hook 'set-no-process-query-on-exit)
+    ;; (defun set-no-process-query-on-exit ()
+    ;;   (let ((proc (get-buffer-process (current-buffer))))
+    ;;     (when (processp proc)
+    ;;       (set-process-query-on-exit-flag proc nil))))
+    ;; (add-hook 'term-exec-hook 'set-no-process-query-on-exit)
 
-       (defadvice term-sentinel (around my-advice-term-sentinel (proc msg))
-	 (if (memq (process-status proc) '(signal exit))
-	     (let ((buffer (process-buffer proc)))
-	       ad-do-it
-	       (kill-buffer buffer))
-	   ad-do-it))
-       (ad-activate 'term-sentinel)
+    ;; (defadvice term-sentinel (around my-advice-term-sentinel (proc msg))
+    ;;   (if (memq (process-status proc) '(signal exit))
+    ;;       (let ((buffer (process-buffer proc)))
+    ;; 	ad-do-it
+    ;; 	(kill-buffer buffer))
+    ;;     ad-do-it))
+    ;; (ad-activate 'term-sentinel)
 
-       (defvar my-term-shell "/bin/bash")
-       (defadvice ansi-term (before force-bash)
-	 (interactive (list my-term-shell)))
-       (ad-activate 'ansi-term)
+    ;; (defvar my-term-shell "/bin/bash")
+    ;; (defadvice ansi-term (before force-bash)
+    ;;   (interactive (list my-term-shell)))
+    ;; (ad-activate 'ansi-term)
 
-       (defun my-term-use-utf8 ()
-	 (set-buffer-process-coding-system 'utf-8-unix 'utf-8-unix))
-       (add-hook 'term-exec-hook 'my-term-use-utf8)
-       
-       (defun my-term-hook ()
-       (goto-address-mode))
-       (add-hook 'term-mode-hook 'my-term-hook)
+    ;; (defun my-term-use-utf8 ()
+    ;;   (set-buffer-process-coding-system 'utf-8-unix 'utf-8-unix))
+    ;; (add-hook 'term-exec-hook 'my-term-use-utf8)
+
+    ;; (defun my-term-hook ()
+    ;; (goto-address-mode))
+    ;; (add-hook 'term-mode-hook 'my-term-hook)
 
 
 
@@ -799,28 +800,28 @@
 
 
 
-(use-package exwm
+  (use-package exwm
+      :ensure t
+      :config
+      (load "my-exwm-config")
+      (require 'exwm-my-config)
+      (exwm-my-config-example))
+
+
+
+      ;; (start-process-shell-command "xrandr" nil "xrandr --output Virtual-1 --primary --mode 2048x1152 --pos 0x0 --rotate normal")
+
+      ;; Load the system tray before exwm-init
+
+
+
+
+
+
+    (use-package sudo-edit
     :ensure t
-    :config
-    (load "my-exwm-config.el")
-    (require 'exwm-my-config)
-    (exwm-my-config-example))
-
-
-
-    ;; (start-process-shell-command "xrandr" nil "xrandr --output Virtual-1 --primary --mode 2048x1152 --pos 0x0 --rotate normal")
-
-    ;; Load the system tray before exwm-init
-
-
-
-
-
-
-  (use-package sudo-edit
-  :ensure t
-  :bind
-    ("s-e" . sudo-edit))
+    :bind
+      ("s-e" . sudo-edit))
 #+END_SRC
 
 * popup kill ring 
@@ -902,7 +903,7 @@
     ;;(add-hook 'yas-minor-mode-hook 'yas-reload-all)
     ;;(add-hook 'yas-global-mode-hook 'yas-reload-all)
     :init
-    (yas-global-mode)
+;;    (yas-global-mode)
   ;;  (yas-reload-all)
     )
 

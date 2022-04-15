@@ -8,7 +8,7 @@
 
 (setq user-full-name "anaya")
 ;;(setq gc-cons-threshold 100000000)
-(setq gc-cons-threshold 60000000)
+(setq gc-cons-threshold 100000000)
 (setq comp-deferred-compilation t)
 ;;(set-face-attribute 'default (selected-frame) :height 105)
 ;;;;;;;;;;
@@ -17,12 +17,14 @@
 (add-to-list 'package-archives
 	      '("melpa" . "https://melpa.org/packages/"))
 
-(package-initialize)
-(unless (package-installed-p 'use-package)
-  (package-refresh-contents)
-  (package-install 'use-package))
 
 (add-to-list 'load-path "~/.emacs.d/lisp")
+;; (package-initialize)
+;; (unless (package-installed-p 'use-package)
+;;   (package-refresh-contents)
+;;   (package-install 'use-package))
+
+
 ;; (set-frame-parameter (selected-frame) 'alpha '(100 50))   ;; press C-x C-e if you want to set your screen transparent by 80%
 
 ;;;;;;;;;; bean dean config
@@ -44,18 +46,17 @@
 
 (when (fboundp 'native-compile-async)
   (setq comp-deferred-compilation t
-        comp-deferred-compilation-black-list '("/mu4e.*\\.el$")))
+;;        comp-deferred-compilation-black-list '("/mu4e.*\\.el$")
+	))
 
 
+;(native-compile-async "~/.emacs.d/lisp/" 6 t)
 
-
-
-
+;(native-compile-async "~/.emacs.d/" nil t)
 
 (org-babel-load-file (expand-file-name "~/.emacs.d/config.org"))
 
 
-(native-compile-async "~/.emacs.d/lisp/" 6 t)
 
 
 

@@ -1,5 +1,11 @@
+;;; exwm-config.el --- Predefined configurations  -*- lexical-binding: t -*-
+
+
+
 (require 'exwm)
 (require 'ido)
+(require 'exwm-randr)
+(require 'exwm-systemtray)
 
 
 (defun exwm-my-config-example ()
@@ -13,11 +19,7 @@
               (exwm-workspace-rename-buffer exwm-class-name)))
 
 
-  (require 'exwm-randr)
   (exwm-randr-enable)
-
-
-  (require 'exwm-systemtray)
   (exwm-systemtray-enable)
 
 

@@ -55,7 +55,7 @@
 (org-babel-load-file (expand-file-name "~/.emacs.d/config.org"))
 
 
-;(native-compile-async "~/.config/emacs/elpa/" 6 t)
+(native-compile-async "~/.emacs.d/lisp/" 6 t)
 
 
 

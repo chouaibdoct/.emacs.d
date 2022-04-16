@@ -181,9 +181,8 @@
     (defun copy-line (&optional arg)
 	"Save current line into Kill-Ring without mark the line "
 	 (interactive "P")
-
-	 (copy-thing 'beginning-of-line 'end-of-line arg)
-  ;;       (paste-to-mark arg)
+	 (save-excursion (copy-thing 'beginning-of-line 'end-of-line arg))
+	 ;;       (paste-to-mark arg)
        )
        (global-set-key (kbd "M-k")         (quote copy-line))
 
@@ -801,11 +800,14 @@
 
 
   (use-package exwm
-      :ensure t
-      :config
-      (load "my-exwm-config")
-      (require 'exwm-my-config)
-      (exwm-my-config-example))
+    :ensure t
+    :config
+    (load "my-exwm-config")
+    (require 'exwm-my-config)
+    (exwm-my-config-example)
+
+  )
+
 
 
 
@@ -818,12 +820,15 @@
 
 
 
-    (use-package sudo-edit
+#+END_SRC
+* sudo-edit
+#+BEGIN_SRC emacs-lisp
+  (use-package sudo-edit
     :ensure t
     :bind
-      ("s-e" . sudo-edit))
-#+END_SRC
+    ("s-e" . sudo-edit))
 
+#+END_SRC
 * popup kill ring 
 #+BEGIN_SRC emacs-lisp
   (use-package popup-kill-ring

@@ -9,20 +9,21 @@
 (setq user-full-name "anaya")
 ;;(setq gc-cons-threshold 100000000)
 (setq gc-cons-threshold 100000000)
-(setq comp-deferred-compilation t)
+
 ;;(set-face-attribute 'default (selected-frame) :height 105)
 ;;;;;;;;;;
 (require 'package)
 (setq package-enable-at-startup nil)
+
 (add-to-list 'package-archives
 	      '("melpa" . "https://melpa.org/packages/"))
 
 
 (add-to-list 'load-path "~/.emacs.d/lisp")
 ;; (package-initialize)
-;; (unless (package-installed-p 'use-package)
-;;   (package-refresh-contents)
-;;   (package-install 'use-package))
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
 
 
 ;; (set-frame-parameter (selected-frame) 'alpha '(100 50))   ;; press C-x C-e if you want to set your screen transparent by 80%
@@ -106,3 +107,6 @@
  '(package-selected-packages
    '(auctex-latexmk async python-mode true qt-pro-mode ccls switch-window rjsx-mode company-qml qml-mode cmake-project eldoc-cmake all-the-icons modern-cpp-font-lock treemacs-all-the-icons yasnippet-snippets which-key vterm-toggle use-package undo-tree treemacs-projectile treemacs-magit treemacs-icons-dired symon smex rainbow-delimiters popup-kill-ring org-pdftools org-bullets nov lsp-ui ivy-xref ivy-rich ir-black-theme iedit ido-vertical-mode flycheck-clang-tidy doom-themes doom-modeline dmenu dired-subtree diminish diff-hl dashboard darkokai-theme darkmine-theme darkburn-theme dark-souls dark-mint-theme dark-krystal-theme dap-mode dakrone-theme d-mode cyberpunk-theme cyberpunk-2019-theme counsel-projectile constant-theme company-quickhelp company-box color-theme-sanityinc-tomorrow cmake-mode clang-format+ beacon badger-theme alect-themes afternoon-theme abyss-theme))
  '(warning-suppress-types '((comp))))
+
+
+(setq gc-cons-threshold 10000000)
